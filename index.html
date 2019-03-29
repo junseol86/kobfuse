@@ -2,15 +2,23 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <link rel="stylesheet" href="style.css">
+    <title>KObfuse :: KFace 난독화 js파일 생성기</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <span id="title">KObfuse :: KFace 난독화 js파일 생성기</span>
+    <form>
+        <div>
+          <span>입력 폴더</span>
+          <input type="file"/>
+        </div>
+        <div>
+          <span>출력 폴더</span>
+          <input type="file"/>
+        </div>
 
+        <button>폴더 내 js 난독화</button>
+    </form>
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')

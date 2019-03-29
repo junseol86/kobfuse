@@ -1,0 +1,28 @@
+@import url("noto-sans.css");
+
+body {
+  background-color: #333;
+  padding: 24px;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+span#title {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+form {
+  margin-top: 12px;
+  font-size: 1.1em;
+}
+
+input {
+  margin-left: 6px;
+  font-size: 0.9em;
+}
+
+button {
+  margin-top: 18px;
+  font-size: 1em;
+}
