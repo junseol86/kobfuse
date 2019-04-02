@@ -6,15 +6,17 @@
     <title>KObfuse :: KFace 난독화 js파일 생성기</title>
   </head>
   <body>
-    <span id="title">KObfuse :: KFace 난독화 js파일 생성기</span>
-      <div>
-        <span>입력 폴더</span>
-        <input id="fromDir" type="file" webkitdirectory directory multiple/>
-      </div>
-      <div>
-        <span>출력 폴더</span>
-        <input id="toDir" type="file" webkitdirectory directory multiple/>
-      </div>
+    <span id="title">
+      KObfuse :: KFace 난독화 js파일 생성기
+    </span>
+    <div class="dirSelectCon from">
+      <div class="dirSelect from">입력 폴더</div>
+      <span class="dirStr from"></span>
+    </div>
+    <div class="dirSelectCon to">
+      <div class="dirSelect to">출력 폴더</div>
+      <span class="dirStr from"></span>
+    </div>
 
       <button id="submit">폴더 내 js 난독화</button>
     <script>

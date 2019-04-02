@@ -12,17 +12,26 @@ span#title {
   font-size: 1.3em;
 }
 
-form {
+div.dirSelectCon {
+  padding: 6px;
+}
+div.dirSelectCon.from {
   margin-top: 12px;
-  font-size: 1.1em;
+}
+div.dirSelectCon.to {
+  margin-bottom: 12px;
 }
 
-input {
-  margin-left: 6px;
-  font-size: 0.9em;
-}
 
-button {
-  margin-top: 18px;
-  font-size: 1em;
+div.dirSelect {
+  display: inline-block;
+  color: black;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+div.dirSelect:hover {
+  background-color: #eee;
 }

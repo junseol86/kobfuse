@@ -1,8 +1,19 @@
 const fs = require('fs');
+const {dialog} = require('electron').remote;
 
-document.querySelector('button#submit').addEventListener('click', () => {
-  let fromDir = document.querySelector('input#fromDir').value;
-  let toDir = document.querySelector('input#toDir').value;
+let fromDir = null;
+let toDir = null;
 
-  console.log(fromDir + ' ' + toDir);
+document.querySelector('.dirSelect.from').addEventListener('click', () => {
+  fromDir = dialog.showOpenDialog({
+      properties: ['openDirectory']
+  });
+  document.querySelector('.dirStr.from').innerHTML = fromDir;
+})
+
+document.querySelector('.dirSelect.to').addEventListener('click', () => {
+  toDir = dialog.showOpenDialog({
+      properties: ['openDirectory']
+  });
+  document.querySelector('.dirStr.to').innerHTML = toDir;
 })
