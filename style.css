@@ -35,3 +35,13 @@ div.dirSelect {
 div.dirSelect:hover {
   background-color: #eee;
 }
+
+div.submitBtn {
+  display: inline-block;
+  color: black;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 0 4px 0 6px;
+  cursor: pointer;
+}
