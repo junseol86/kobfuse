@@ -61,7 +61,13 @@ FileProcess.prototype.obfuscate = function (dirPath, fileName) {
   let fromFullPath = fp.fromDir + dirPath + '/' + fileName;
 
   if (fp.onlyUpdated && fp.fs.existsSync(toFullPath)) {
-    if (fp.fs.statSync(fromFullPath).mtime < fp.fs.statSync(toFullPath).mtime) return;
+    if (fileName.slice(-3) === '.js') {
+      // 자바스크립트면 수정일이 같아도 난독화
+      if (fp.fs.statSync(fromFullPath).mtime < fp.fs.statSync(toFullPath).mtime) return;
+    } else {
+      // 자바스크립트가 아니면 난독화 할 필요 없으므로 새로 복사할 필요 없음
+      if (fp.fs.statSync(fromFullPath).mtime <= fp.fs.statSync(toFullPath).mtime) return;
+    }
   }
 
   fp.fs.ensureDirSync(toDir);
