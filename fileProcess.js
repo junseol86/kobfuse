@@ -39,12 +39,22 @@ FileProcess.prototype.processDirs = function () {
         fp.dirsToPrc.push(indName);
         fp.procDirCount++;
       } else {
-        fp.procFileCount++;
+        if (inDir.slice(-3) === '.js') {
+          fp.obfuscate(dirToPrc.replace(fp.fromDir, ''), inDir);
+          fp.procFileCount++;
+        }
       }
       fp.submitProg.innerHTML = fp.procFileCount + '개 파일, ' + fp.procDirCount + '개 폴더 처리됨';
-      console.log(indName);
-      console.log(fp.onlyUpdated);
     });
+}
+
+// 입력 폴더의 js파일들을 출력 폴더로 처리
+FileProcess.prototype.obfuscate = function (dirPath, fileName) {
+  const fp = this;
+  let toDir = (fp.toDir + dirPath).replace('//', '/').replace('\\\\', '\\');
+  console.log(toDir + ' ' + fileName);
+  fp.fs.ensureDirSync(toDir);
+  console.log(dirPath + ' ' + fileName);
 }
 
 module.exports = FileProcess;

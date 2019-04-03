@@ -1,7 +1,7 @@
 const remote = require('electron').remote;
 const dialog = remote.dialog;
 const session = remote.session;
-const fs = remote.require('fs');
+const fs = remote.require('fs-extra');
 const fileProcess = require('./fileProcess');
 
 session.defaultSession.cookies.get({url: 'https://www.ddhouse.co.kr'}, (error, cookies) => {
