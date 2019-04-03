@@ -12,6 +12,11 @@ span#title {
   font-size: 1.3em;
 }
 
+div.modeCon {
+  margin-top: 12px;
+  padding: 6px;
+}
+
 div.dirSelectCon {
   padding: 6px;
 }
@@ -21,7 +26,6 @@ div.dirSelectCon.from {
 div.dirSelectCon.to {
   margin-bottom: 12px;
 }
-
 
 div.dirSelect {
   display: inline-block;

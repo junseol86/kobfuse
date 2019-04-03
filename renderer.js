@@ -26,6 +26,17 @@ document.querySelector('.submitBtn').addEventListener('click', () => {
   if (fromDir === null || toDir === null) {
     submitProg.innerHTML = '입력 폴더와 출력 폴더를 모두 선택하세요.'
   } else {
-    let fp = new fileProcess(fs, fromDir, toDir, submitProg);
+    let fp = new fileProcess(
+      {
+        fs: fs
+      }, 
+      {
+        fromDir: fromDir,
+        toDir: toDir,
+        onlyUpdated: document.querySelector('#onlyUpdated').checked
+      }, 
+      {
+        submitProg, submitProg
+      });
   }
 })
