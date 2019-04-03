@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>KObfuse :: KFace 난독화 js파일 생성기</title>
+    <title>KObfuse :: KFace 폴더 난독 동기화</title>
   </head>
   <body>
     <span id="title">
-      KObfuse :: KFace 난독화 js파일 생성기
+      KObfuse :: KFace 폴더 난독 동기화
     </span>
     <div class="modeCon">
-      <input type="radio" id="onlyUpdated" name="mode" checked="checked"/> 업데이트된(출력 위치에 같은 이름의 더 새로운 파일이 없는) 파일만 처리
+      <input type="radio" name="mode" checked="checked"/> 모든 파일 처리
       <br>
-      <input type="radio" name="mode"/> 모든 파일 처리
+      <input type="radio" id="onlyUpdated" name="mode"/> 업데이트된(출력 위치에 같은 이름의 더 새로운 파일이 없는) 파일만 처리
     </div>
     <div class="modeCon">
       <input type="radio" id="onlyJs" name="filetype" checked="checked"/> .js 파일만 난독화해서 복사
@@ -34,6 +34,11 @@
       </div>
       <span class="submitProgress"></span>
     </div>
+
+    <div class="resultCon">
+
+    </div>
+
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')

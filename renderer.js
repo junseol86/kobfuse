@@ -2,6 +2,7 @@ const remote = require('electron').remote;
 const dialog = remote.dialog;
 const session = remote.session;
 const fs = remote.require('fs-extra');
+const jsObf = remote.require('javascript-obfuscator');
 const fileProcess = require('./fileProcess');
 
 session.defaultSession.cookies.get({url: 'https://www.ddhouse.co.kr'}, (error, cookies) => {
@@ -24,6 +25,7 @@ let fromDir = null;
 let toDir = null;
 
 let submitProg = document.querySelector('.submitProgress');
+let resultCon = document.querySelector('.resultCon');
 
 document.querySelector('.dirSelect.from').addEventListener('click', () => {
   setFromDir(dialog.showOpenDialog({
@@ -64,7 +66,8 @@ document.querySelector('.submitBtn').addEventListener('click', () => {
   } else {
     let fp = new fileProcess(
       {
-        fs: fs
+        fs: fs,
+        jsObf: jsObf
       }, 
       {
         fromDir: fromDir,
@@ -73,7 +76,8 @@ document.querySelector('.submitBtn').addEventListener('click', () => {
         onlyJs: document.querySelector('#onlyJs').checked,
       }, 
       {
-        submitProg, submitProg
+        submitProg: submitProg,
+        resultCon: resultCon
       });
   }
 })

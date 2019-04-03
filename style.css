@@ -49,3 +49,23 @@ div.submitBtn {
   margin: 0 4px 0 6px;
   cursor: pointer;
 }
+
+div.resultCon {
+  height: 380px;
+  margin-top: 24px;
+  background-color: #111;
+  overflow-y: scroll;
+}
+div.resultCon > div {
+  padding: 4px;
+  font-size: 0.9em;
+}
+div.resultCon > div.lime {
+  color: lime;
+}
+div.resultCon > div.salmon {
+  color: salmon;
+}
+div.resultCon > div:nth-child(even) {
+  background-color: black;
+}
