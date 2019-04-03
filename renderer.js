@@ -59,6 +59,8 @@ function setToDir (td) {
 document.querySelector('.submitBtn').addEventListener('click', () => {
   if (fromDir === null || toDir === null) {
     submitProg.innerHTML = '입력 폴더와 출력 폴더를 모두 선택하세요.'
+  } else if (fromDir === toDir) {
+    submitProg.innerHTML = '입력 폴더와 출력 폴더를 다르게 선택하세요.'
   } else {
     let fp = new fileProcess(
       {
@@ -67,7 +69,8 @@ document.querySelector('.submitBtn').addEventListener('click', () => {
       {
         fromDir: fromDir,
         toDir: toDir,
-        onlyUpdated: document.querySelector('#onlyUpdated').checked
+        onlyUpdated: document.querySelector('#onlyUpdated').checked,
+        onlyJs: document.querySelector('#onlyJs').checked,
       }, 
       {
         submitProg, submitProg

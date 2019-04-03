@@ -2,15 +2,16 @@ class FileProcess {
   constructor(lib, inputs, elms) {
     this.fs = lib.fs;
 
-    this.onlyUpdated = inputs.onlyUpdated;
     this.fromDir = inputs.fromDir;
     this.toDir = inputs.toDir;
+    this.onlyUpdated = inputs.onlyUpdated;
+    this.onlyJs = inputs.onlyJs;
+
     this.submitProg = elms.submitProg;
 
     this.dirsToPrc = [this.fromDir]; // push된 폴더가 처리되고 pop되는 곳
     this.prcDirInterval;
     this.procFileCount = 0;
-    this.procDirCount = 0;
 
     this.init();
   }
@@ -37,24 +38,22 @@ FileProcess.prototype.processDirs = function () {
       let indName = dirToPrc + '/' + inDir;
       if (fp.fs.lstatSync(indName).isDirectory()) {
         fp.dirsToPrc.push(indName);
-        fp.procDirCount++;
       } else {
-        if (inDir.slice(-3) === '.js') {
+        if (!fp.onlyJs || inDir.slice(-3) === '.js') {
           fp.obfuscate(dirToPrc.replace(fp.fromDir, ''), inDir);
-          fp.procFileCount++;
         }
       }
-      fp.submitProg.innerHTML = fp.procFileCount + '개 파일, ' + fp.procDirCount + '개 폴더 처리됨';
     });
 }
 
 // 입력 폴더의 js파일들을 출력 폴더로 처리
 FileProcess.prototype.obfuscate = function (dirPath, fileName) {
   const fp = this;
-  let toDir = (fp.toDir + dirPath).replace('//', '/').replace('\\\\', '\\');
-  console.log(toDir + ' ' + fileName);
+  let toDir = (fp.toDir + dirPath);
   fp.fs.ensureDirSync(toDir);
-  console.log(dirPath + ' ' + fileName);
+
+  fp.procFileCount++;
+  fp.submitProg.innerHTML = fp.procFileCount + '개 파일 폴더 처리됨';
 }
 
 module.exports = FileProcess;
