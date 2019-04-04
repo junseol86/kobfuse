@@ -1,4 +1,38 @@
 {
+  "build": {
+    "productName": "KObfuse",
+    "appId": "com.kface.kobfuse",
+    "asar": true,
+    "protocols" : {
+        "name" : "KObfuse",
+        "schemes" : ["KObfuse"]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": { 
+      "title": "KObfuse"
+    },
+    "win": { 
+      "target": [  
+        "zip",  
+        "nsis" 
+      ]
+    },
+    "nsis":{
+      "oneClick" : false, 
+      "allowToChangeInstallationDirectory" :true 
+    },
+    "directories": {
+      "buildResources": "resources/installer/",
+      "output": "dist/",
+      "app": "."
+    }
+  },
+
+
   "name": "kobfuse",
   "version": "1.0.0",
   "description": "",
@@ -6,7 +40,12 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-packager ./ KObfuse --all"
+    "build": "electron-packager ./ KObfuse --all",
+
+    "build:osx": "build --mac",
+    "build:win": "npm run build:win32 && npm run build:win64", 
+    "build:win32": "build --win --ia32",
+    "build:win64": "build --win --x64"
   },
   "author": "Ko Hyunmin",
   "license": "ISC",
@@ -16,6 +55,7 @@
   },
   "devDependencies": {
     "electron": "^4.1.2",
+    "electron-builder": "^20.39.0",
     "electron-packager": "^13.1.1"
   }
 }
